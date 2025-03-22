@@ -6,8 +6,9 @@ using Test
 end
 
 @info "Running writer"
-@info (ENV["GITHUB_REF_TYPE"])
-@info (ENV["GITHUB_EVENT_NAME"])
+@info "GITHUB_REF_TYPE" (ENV["GITHUB_REF_TYPE"])
+@info "GITHUB_EVENT_NAME" (ENV["GITHUB_EVENT_NAME"])
+@info "GITHUB_REF" (ENV["GITHUB_REF"])
 
 x = rand(1:10)
 open("testfile", "w") do io
