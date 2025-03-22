@@ -5,13 +5,26 @@ using Test
     # Write your tests here.
 end
 
+devbranch = "main"
+
 @info "Running writer"
 @info "GITHUB_REF_TYPE" (ENV["GITHUB_REF_TYPE"])
 @info "GITHUB_EVENT_NAME" (ENV["GITHUB_EVENT_NAME"])
 @info "GITHUB_REF" (ENV["GITHUB_REF"])
 
+pushdecision = false
+
+if ENV["GITHUB_REF_TYPE"] == "branch" && ENV["GITHUB_EVENT_NAME"] == "push" && ENV["GITHUB_REF"] == "refs/heads/$devbranch"
+  pushdecision = true
+  ENV["PUSH_DIR"] = devbranch
+end
+
+@info pushdecision, devbranch
+
 x = rand(1:10)
-open("testfile", "w") do io
+path = "_tutorials/$devbranch"
+mkpath(path)
+open("$path/testfile", "w") do io
   println(io, x)
 end
 @info "done"
