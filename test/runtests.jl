@@ -13,13 +13,18 @@ devbranch = "main"
 @info "GITHUB_REF" (ENV["GITHUB_REF"])
 
 pushdecision = false
+pushdir = nothing
 
-if ENV["GITHUB_REF_TYPE"] == "branch" && ENV["GITHUB_EVENT_NAME"] == "push" && ENV["GITHUB_REF"] == "refs/heads/$devbranch"
+if ENV["GITHUB_REF_TYPE"] == "branch" && ENV["GITHUB_EVENT_NAME"] == "push" && ENV["GITHUB_REF"] == "refs/heads/$devbranch" ||
   pushdecision = true
-  ENV["PUSH_DIR"] = devbranch
+  pushdir = devbranch
 end
 
-@info pushdecision, devbranch
+if ENV["GITHUB_REF_TYPE"] == "tag" && ENV["GITHUB_EVENT_NAME"] == "push" && starswith(ENV["GITHUB_REF"] == "refs/tags/v")
+  _, pushdir = split("ENV["GITHUB_REF"]", "refs/tags/")[2]
+end
+
+@info pushdecision, pushdir
 
 x = rand(1:10)
 path = "_tutorials/$devbranch"
