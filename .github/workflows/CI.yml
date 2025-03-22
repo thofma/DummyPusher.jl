@@ -43,7 +43,7 @@ jobs:
           path: tutorials
           token: ${{secrets.PUSH_TOKEN}}
       - name: Publish documentation
-        if: github.ref == 'refs/heads/main' || github.ref_type == 'tag'
+        if: github.ref == 'refs/heads/main'
         run: |
           pwd
           ls -la
