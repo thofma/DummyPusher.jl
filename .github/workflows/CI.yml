@@ -39,19 +39,20 @@ jobs:
       - uses: julia-actions/cache@v2
       - uses: julia-actions/julia-buildpkg@v1
       - uses: julia-actions/julia-runtest@v1
+      - run: cd ..
       - uses: actions/checkout@v2
         with:
           repository: thofma/HeckeTutorials.jl
-          path: ../tutorials
+          path: tutorials
           token: ${{secrets.PUSH_TOKEN}}
       - name: Publish documentation
         run: |
           pwd
           ls -la
           ls -lah test/
-          cp -R test/testfile ../tutorials/
+          cp -R DummyPusher.jl/test/testfile tutorials/
           pwd
-          cd ../tutorials
+          cd tutorials
           ls -lah
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
