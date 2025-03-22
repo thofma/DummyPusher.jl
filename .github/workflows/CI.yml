@@ -50,7 +50,7 @@ jobs:
           ls -lah test/
           ls -lah test/_tutorials/
           mkdir -p tutorials/_tutorials/
-          cp -R -v test/_tutorials/ tutorials/_tutorials
+          cp -R -v test/_tutorials/* tutorials/_tutorials/
           pwd
           cd tutorials
           ls -lah
