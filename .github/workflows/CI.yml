@@ -48,7 +48,7 @@ jobs:
         run: |
           pwd
           ls -la
-          cp -RT Hecke.jl/test/testfile tutorials/
+          cp -RT test/testfile tutorials/
           pwd
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
