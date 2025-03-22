@@ -15,7 +15,7 @@ devbranch = "main"
 pushdecision = false
 pushdir = nothing
 
-if ENV["GITHUB_REF_TYPE"] == "branch" && ENV["GITHUB_EVENT_NAME"] == "push" && ENV["GITHUB_REF"] == "refs/heads/$devbranch" ||
+if ENV["GITHUB_REF_TYPE"] == "branch" && ENV["GITHUB_EVENT_NAME"] == "push" && ENV["GITHUB_REF"] == "refs/heads/$devbranch" 
   pushdecision = true
   pushdir = devbranch
 end
