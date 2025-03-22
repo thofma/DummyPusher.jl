@@ -46,7 +46,9 @@ jobs:
           token: ${{secrets.PUSH_TOKEN}}
       - name: Publish documentation
         run: |
-          cp -RT Hecke.jl/test/testfile.jl tutorials/
+          cp -RT Hecke.jl/test/testfile tutorials/
+          pwd
+          ls -la
           cd tutorials
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
