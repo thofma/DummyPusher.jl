@@ -20,7 +20,7 @@ if ENV["GITHUB_REF_TYPE"] == "branch" && ENV["GITHUB_EVENT_NAME"] == "push" && E
   pushdir = devbranch
 end
 
-if ENV["GITHUB_REF_TYPE"] == "tag" && ENV["GITHUB_EVENT_NAME"] == "push" && startswith(ENV["GITHUB_REF"] == "refs/tags/v")
+if ENV["GITHUB_REF_TYPE"] == "tag" && ENV["GITHUB_EVENT_NAME"] == "push" && startswith(ENV["GITHUB_REF"], "refs/tags/v")
   _, pushdir = split(ENV["GITHUB_REF"], "refs/tags/")[2]
 end
 
