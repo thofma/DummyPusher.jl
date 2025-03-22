@@ -46,10 +46,12 @@ jobs:
           token: ${{secrets.PUSH_TOKEN}}
       - name: Publish documentation
         run: |
+          echo $PUSH_DIR
           pwd
           ls -la
           ls -lah test/
-          cp -R test/testfile tutorials/
+          mkdir -p tutorials/_tutorials/
+          cp -R test/_tutorials/ tutorials/_tutorials/
           pwd
           cd tutorials
           ls -lah
