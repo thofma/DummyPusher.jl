@@ -48,6 +48,7 @@ jobs:
           pwd
           ls -la
           ls -lah test/
+          ls -lah test/_tutorials/
           mkdir -p tutorials/_tutorials/
           cp -R -v test/_tutorials/ tutorials/_tutorials
           pwd

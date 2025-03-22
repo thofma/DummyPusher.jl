@@ -29,6 +29,7 @@ end
 x = rand(1:10)
 path = "_tutorials/$devbranch"
 mkpath(path)
+@info path
 open("$path/testfile", "w") do io
   println(io, x)
 end
