@@ -48,7 +48,8 @@ jobs:
         run: |
           pwd
           ls -la
-          cp -RT test/testfile tutorials/
+          ls -lah test/
+          cp -R test/testfile tutorials/
           pwd
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
