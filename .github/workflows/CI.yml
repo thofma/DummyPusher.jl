@@ -24,8 +24,6 @@ jobs:
       matrix:
         version:
           - '1.11'
-          - '1.6'
-          - 'pre'
         os:
           - ubuntu-latest
         arch:
@@ -45,8 +43,8 @@ jobs:
           path: tutorials
           token: ${{secrets.PUSH_TOKEN}}
       - name: Publish documentation
+        if: github.ref == 'refs/heads/main' || github.ref_type == 'tag'
         run: |
-          echo $PUSH_DIR
           pwd
           ls -la
           ls -lah test/
